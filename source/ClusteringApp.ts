@@ -1,33 +1,29 @@
 import GraphicalCore from './GraphicalCore';
+import { Point } from './geometry/Point';
+import FPS from './FPS';
 
 const step = 60;
 
 export default class ClusteringApp extends GraphicalCore {
-    timestamp = Date.now();
-    counter = 0;
-    fps = 0;
+    private fps = new FPS();
+    private point: Point = [step*5, step*5];
 
     run() {
         this.drawBackground();
         this.updateFps();
+        this.drawCircle(this.point);
 
         window.requestAnimationFrame(() => {
             this.run();
-        })
+        });
+    }
+
+    setPoint(p: Point) {
+        this.point[0] = p[0];
+        this.point[1] = p[1];
     }
 
     updateFps() {
-        const now = Date.now();
-        const dT = now - this.timestamp;
-
-        if (dT > 1000) {
-            this.fps = this.counter;
-            this.counter = 0;
-            this.timestamp = now;
-        }
-
-        this.counter++
-
         this.ctx.fillStyle = 'white';
         this.ctx.font = '20px Arial';        // define the CSS font for writing text
         this.ctx.fillText (`FPS ${this.fps.toString()}`,this.width - 80,30);   // write the text 'Hello'
