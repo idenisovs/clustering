@@ -1,15 +1,20 @@
 {
   "name": "computer-graphics",
   "version": "1.0.0",
-  "description": "",
+  "description": "Clustering practice",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "webpack serve --progress",
     "build": "webpack",
     "clean": "rm -frv public/dist"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:idenisovs/clustering.git"
+  },
+  "keywords": [ "clustering" ],
+  "author": "Ilya Denisovs",
   "license": "ISC",
   "devDependencies": {
     "ts-loader": "^8.0.10",

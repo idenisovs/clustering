@@ -1,0 +1,9 @@
+#!/bin/bash
+
+HOST={hostname}
+SOURCE=$(pwd)/public/
+TARGET={target directory}
+
+npm run build && \
+scp -r "$SOURCE"/* $HOST:$TARGET && \
+npm run clean

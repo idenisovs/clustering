@@ -1,8 +1,10 @@
 # Clustering
 
-I made this application during my Master study, for Data Mining course, with goal to do some clustering practice.
+I made this application during my Master study, for Data Mining course, with goal to do some practice with clustering.
 
 ## Dependencies
+
+The major dependencies of application: 
 
 * [Node.js](https://nodejs.org/en/)
 * [TypeScript](https://www.typescriptlang.org/)
@@ -27,3 +29,7 @@ npm run start
 ```
 
 Then open your browser and navigate to http://localhost:9001.
+
+## Live
+
+You can also see the live example of this application by this link: http://clustering.e-dreams.lv
