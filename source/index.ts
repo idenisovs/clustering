@@ -1,11 +1,7 @@
-import Point from './Point';
-import {distance} from './geometry';
+window.onload = function init() {
+    const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 
-const p1 = new Point(0, 0);
-console.log(p1);
-
-const p2 = new Point(5, 0);
-console.log(p2);
-
-const d = distance(p1, p2);
-console.log(d);
+    ctx.fillStyle = 'green';
+    ctx.fillRect(200, 10, 100, 100);
+};
