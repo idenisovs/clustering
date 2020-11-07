@@ -8,6 +8,18 @@ module.exports = {
 	entry: sourceDir,
 	mode: 'development',
 	devtool: 'source-map',
+	module: {
+		rules: [
+			{
+				test: /.ts$/,
+				use: 'ts-loader',
+				exclude: /node_modules/
+			}
+		]
+	},
+	resolve: {
+		extensions: [ '.ts', '.js' ]
+	},
 	devServer: {
 		contentBase: publicDir,
 		publicPath: '/dist/'
