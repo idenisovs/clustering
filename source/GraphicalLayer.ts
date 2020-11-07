@@ -1,12 +1,12 @@
 import FunctionalLayer from './FunctionalLayer';
 import FPS from './utils/FPS';
-import Circle from './geometry/Circle';
+import Dot from './geometry/Dot';
 
 const step = 60;
 
 export default class GraphicalLayer extends FunctionalLayer {
     private fps = new FPS();
-    protected circles: Circle[] = []
+    protected dots: Dot[] = []
 
     run() {
         this.drawBackground();
@@ -40,8 +40,8 @@ export default class GraphicalLayer extends FunctionalLayer {
     }
 
     drawPoints() {
-        for (const circle of this.circles) {
-            this.drawCircle(circle.point, circle.radius);
+        for (const dot of this.dots) {
+            this.drawCircle(dot.point, dot.radius);
         }
     }
 }

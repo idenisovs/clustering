@@ -1,9 +1,26 @@
 import GraphicalLayer from './GraphicalLayer';
-import Circle from './geometry/Circle';
 import { Point } from './geometry/Point';
+import { distance } from './geometry';
+import Dot from './geometry/Dot';
 
 export default class ClusteringApp extends GraphicalLayer {
-    togglePoint(p: Point) {
-        this.circles.push(new Circle(p));
+    toggleDot(p: Point) {
+        const nearestDot = this.dots.find((dot) => {
+            const l = distance(dot.point, p);
+
+            return l < (dot.radius * 2);
+        });
+
+        if (nearestDot) {
+            this.removeDot(nearestDot);
+        } else {
+            this.dots.push(new Dot(p));
+        }
+    }
+
+    removeDot(dot: Dot) {
+        const idx = this.dots.indexOf(dot);
+
+        this.dots.splice(idx, 1);
     }
 }
