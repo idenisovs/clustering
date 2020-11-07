@@ -1,5 +1,5 @@
 import FunctionalLayer from './FunctionalLayer';
-import FPS from './FPS';
+import FPS from './utils/FPS';
 import Circle from './geometry/Circle';
 
 const step = 60;
