@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve --progress"
+    "start": "webpack serve --progress",
+    "build": "webpack",
+    "clean": "rm -frv public/dist"
   },
   "keywords": [],
   "author": "",
