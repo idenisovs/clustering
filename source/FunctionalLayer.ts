@@ -1,7 +1,7 @@
-import Core from './Core';
+import CoreLayer from './CoreLayer';
 import { Point } from './geometry/Point';
 
-export default class GraphicalCore extends Core {
+export default class FunctionalLayer extends CoreLayer {
     drawLine(p1: Point, p2: Point) {
         const ctx = this.ctx;
 

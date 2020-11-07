@@ -1,6 +1,7 @@
 import ClusteringApp from './ClusteringApp';
 import { Point } from './geometry/Point';
 
+
 window.onload = function init() {
     const app = new ClusteringApp();
 
@@ -12,6 +13,6 @@ window.onload = function init() {
             ev.clientY
         ];
 
-        app.setPoint(p);
+        app.togglePoint(p);
     });
 };

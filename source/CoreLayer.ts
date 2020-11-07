@@ -1,4 +1,4 @@
-export default class Core {
+export default class CoreLayer {
     canvas = document.getElementById('canvas') as HTMLCanvasElement;
     ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
     height = window.innerHeight;
