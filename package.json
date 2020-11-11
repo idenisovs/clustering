@@ -13,7 +13,9 @@
     "type": "git",
     "url": "git@github.com:idenisovs/clustering.git"
   },
-  "keywords": [ "clustering" ],
+  "keywords": [
+    "clustering"
+  ],
   "author": "Ilya Denisovs",
   "license": "ISC",
   "devDependencies": {
@@ -21,6 +23,7 @@
     "typescript": "^4.0.5",
     "webpack": "^5.4.0",
     "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^3.11.0",
+    "worker-loader": "^3.0.5"
   }
 }
