@@ -11,15 +11,10 @@ addEventListener('message', ({ data }: { data: Dot[] }) => {
 
   const clusters = data.map(dot => new Cluster(dot.point));
 
-  for (let i = 0; i < clusters.length; i++) {
-    let clusterContinueToGrow = false;
+  for (let i = 0; i < clusters.length - 1; i++) {
     const c1 = clusters[i];
 
-    for (let j = 0; j < clusters.length; j++) {
-      if (i === j) {
-        continue;
-      }
-
+    for (let j = i + 1; j < clusters.length; j++) {
       const c2 = clusters[j];
 
       const nearestPoints = findNearestPoints(c1, c2);
@@ -27,13 +22,9 @@ addEventListener('message', ({ data }: { data: Dot[] }) => {
       if (nearestPoints.distance < threshold) {
         c1.merge(c2);
         clusters.splice(j, 1);
-        j--;
-        clusterContinueToGrow = true;
+        i--;
+        break;
       }
-    }
-
-    if (clusterContinueToGrow) {
-      i--;
     }
   }
 
