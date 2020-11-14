@@ -9,3 +9,4 @@ export function distance(p1: Point, p2: Point): number {
 
     return Math.sqrt(dX2 + dY2);
 }
+

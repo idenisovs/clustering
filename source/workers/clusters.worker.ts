@@ -1,34 +1,42 @@
 /// <reference lib="webworker" />
 
-import { Point } from '../geometry/Point';
-import { distance } from '../geometry';
 import Dot from '../geometry/Dot';
+import Cluster from '../clustering/Cluster';
+import { findNearestPoints } from '../clustering';
 
-function makeDistanceMatrix(dots: Dot[]): number[][] {
-  console.log(dots);
-
-  const result = [];
-
-  for (let i = 0; i < dots.length; i++) {
-    const row: number[] = [];
-    const a = dots[i].point;
-
-    for (let j = 0; j < dots.length; j++) {
-      const b = dots[j].point;
-      const d = distance(a, b);
-
-      row.push(d);
-    }
-
-    result.push(row);
-  }
-
-  return result;
-}
+const threshold = 100;
 
 addEventListener('message', ({ data }: { data: Dot[] }) => {
-  const distanceMatrix = makeDistanceMatrix(data);
+  Cluster.reset();
 
-  postMessage(distanceMatrix);
+  const clusters = data.map(dot => new Cluster(dot.point));
+
+  for (let i = 0; i < clusters.length; i++) {
+    let clusterContinueToGrow = false;
+    const c1 = clusters[i];
+
+    for (let j = 0; j < clusters.length; j++) {
+      if (i === j) {
+        continue;
+      }
+
+      const c2 = clusters[j];
+
+      const nearestPoints = findNearestPoints(c1, c2);
+
+      if (nearestPoints.distance < threshold) {
+        c1.merge(c2);
+        clusters.splice(j, 1);
+        j--;
+        clusterContinueToGrow = true;
+      }
+    }
+
+    if (clusterContinueToGrow) {
+      i--;
+    }
+  }
+
+  postMessage(clusters.length);
 });
 
