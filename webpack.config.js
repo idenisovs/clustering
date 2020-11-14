@@ -22,7 +22,8 @@ module.exports = {
 	},
 	devServer: {
 		contentBase: publicDir,
-		publicPath: '/dist/'
+		publicPath: '/dist/',
+		port: 9001
 	},
 	output: {
 		path: targetDir,
