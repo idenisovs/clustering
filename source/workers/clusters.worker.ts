@@ -2,17 +2,33 @@
 
 import { Point } from '../geometry/Point';
 import { distance } from '../geometry';
+import Dot from '../geometry/Dot';
 
+function makeDistanceMatrix(dots: Dot[]): number[][] {
+  console.log(dots);
 
-// Respond to message from parent thread
-addEventListener('message', ({ data }: { data: string }) => {
-  const p1: Point = [ 1, 0 ];
-  const p2: Point = [ 10, 1 ];
+  const result = [];
 
-  const L = distance(p1, p2);
+  for (let i = 0; i < dots.length; i++) {
+    const row: number[] = [];
+    const a = dots[i].point;
 
-  postMessage({
-    distance: L
-  });
+    for (let j = 0; j < dots.length; j++) {
+      const b = dots[j].point;
+      const d = distance(a, b);
+
+      row.push(d);
+    }
+
+    result.push(row);
+  }
+
+  return result;
+}
+
+addEventListener('message', ({ data }: { data: Dot[] }) => {
+  const distanceMatrix = makeDistanceMatrix(data);
+
+  postMessage(distanceMatrix);
 });
 
