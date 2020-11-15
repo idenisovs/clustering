@@ -1,11 +1,6 @@
 import ClusteringApp from './ClusteringApp';
 import { Point } from './geometry/Point';
 
-
-interface Result {
-    distance: number;
-}
-
 window.onload = function init() {
 
     const app = new ClusteringApp();

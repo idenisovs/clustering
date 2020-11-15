@@ -7,11 +7,13 @@ const step = 60;
 export default class GraphicalLayer extends FunctionalLayer {
     private fps = new FPS();
     protected dots: Dot[] = []
+    protected clustersCount = 0;
 
     run() {
         this.drawBackground();
         this.drawPoints();
         this.updateFps();
+        this.updateClustersCount();
 
         window.requestAnimationFrame(() => {
             this.run();
@@ -22,6 +24,12 @@ export default class GraphicalLayer extends FunctionalLayer {
         this.ctx.fillStyle = 'white';
         this.ctx.font = '20px Arial';
         this.ctx.fillText (`FPS ${this.fps.toString()}`,this.width - 80,30);
+    }
+
+    updateClustersCount() {
+        this.ctx.fillStyle = 'white';
+        this.ctx.font = '20px Arial';
+        this.ctx.fillText (`Clusters: ${this.clustersCount}`,10,30);
     }
 
     drawBackground() {

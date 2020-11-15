@@ -37,7 +37,7 @@ export default class ClusteringApp extends GraphicalLayer {
         this.worker.postMessage(this.dots);
     }
 
-    handleClusteringResult({ data }: { data: any }) {
-        console.log(data);
+    handleClusteringResult({ data }: { data: number }) {
+        this.clustersCount = data;
     }
 }
